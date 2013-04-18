@@ -27,10 +27,6 @@ if node['postfix']['use_procmail']
 end
 
 
-service "postfix" do
-  supports :status => true, :restart => true, :reload => true
-  action :enable
-end
 
 case node['platform_family']
 when "rhel", "fedora"
@@ -61,5 +57,7 @@ end
 end
 
 service "postfix" do
+  supports :status => true, :restart => true, :reload => true
+  action :enable
   action :start
 end
